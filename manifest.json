@@ -1,0 +1,22 @@
+{
+  "name": "SEISMIC WATCH — 南海トラフ・富士山監視",
+  "short_name": "地震監視",
+  "description": "南海トラフ・富士山周辺の地震異常検知ダッシュボード",
+  "start_url": "./seismic-monitor.html",
+  "display": "standalone",
+  "background_color": "#060c14",
+  "theme_color": "#00d4ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%23060c14'/><text y='130' font-size='130' text-anchor='middle' x='96'>🌊</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23060c14'/><text y='360' font-size='360' text-anchor='middle' x='256'>🌊</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
