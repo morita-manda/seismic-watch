@@ -535,10 +535,88 @@ async function registerSW() {
 }
 
 function startBgCheck() {
-  if (!swReg || !swReg.active) return;
-  const mins = parseInt(document.getElementById('check-interval')?.value || '30');
-  swReg.active.postMessage({ type: 'START_CHECK', data: { intervalMinutes: mins } });
-  showPwaStatus('バックグラウンド監視 開始（' + mins + '分ごと）', 'ok');
+  try {
+    const mins = parseInt(document.getElementById('check-interval')?.value || '30');
+
+    // swRegがなくてもsetIntervalでチェックする（フォールバック）
+    if (!swReg || !swReg.active) {
+      // Service Workerなしでも動くよう直接インターバルを設定
+      if (window._bgCheckTimer) clearInterval(window._bgCheckTimer);
+      window._bgCheckTimer = setInterval(() => bgCheckFallback(), mins * 60 * 1000);
+      bgCheckFallback(); // 初回即実行
+      showPwaStatus('監視 開始（' + mins + '分ごと）', 'ok');
+      return;
+    }
+
+    swReg.active.postMessage({ type: 'START_CHECK', data: { intervalMinutes: mins } });
+    showPwaStatus('バックグラウンド監視 開始（' + mins + '分ごと）', 'ok');
+  } catch(e) {
+    showPwaStatus('開始失敗: ' + e.message, 'warn');
+  }
+}
+
+// Service Workerなし時のフォールバックチェック
+async function bgCheckFallback() {
+  try {
+    const now = new Date();
+    const past = new Date(now - 24 * 60 * 60 * 1000);
+    const fmt = d => d.toISOString().slice(0, 10);
+    const url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson'
+      + '&starttime=' + fmt(past) + '&endtime=' + fmt(now)
+      + '&minlatitude=24&maxlatitude=46'
+      + '&minlongitude=122&maxlongitude=146'
+      + '&minmagnitude=4.5&orderby=time&limit=10';
+
+    const res = await fetch(url);
+    if (!res.ok) return;
+    const json = await res.json();
+    const features = json.features || [];
+
+    const ZONES = {
+      nankai: { latMin:30, latMax:36, lonMin:129, lonMax:137 },
+      fuji:   { latMin:34.8, latMax:36.2, lonMin:138, lonMax:139.5 },
+    };
+
+    // すでに通知した地震IDを記録（重複防止）
+    const notified = JSON.parse(localStorage.getItem('notified_ids') || '[]');
+    const newNotified = [...notified];
+
+    for (const f of features) {
+      const id = f.id;
+      if (notified.includes(id)) continue; // 重複スキップ
+
+      const p = f.properties || {};
+      const coords = f.geometry?.coordinates || [];
+      const lon = coords[0], lat = coords[1], mag = p.mag || 0;
+      const name = p.place || '不明';
+
+      const inNankai = lat>=ZONES.nankai.latMin && lat<=ZONES.nankai.latMax && lon>=ZONES.nankai.lonMin && lon<=ZONES.nankai.lonMax;
+      const inFuji   = lat>=ZONES.fuji.latMin   && lat<=ZONES.fuji.latMax   && lon>=ZONES.fuji.lonMin   && lon<=ZONES.fuji.lonMax;
+
+      let title = '', body = '';
+      if (inNankai && mag >= 5) {
+        title = '🚨 南海トラフ域 M' + mag.toFixed(1) + ' 検出';
+        body  = name + '\n気象庁情報を確認してください。';
+      } else if (inFuji && mag >= 4) {
+        title = '🌋 富士山周辺 M' + mag.toFixed(1) + ' 検出';
+        body  = name;
+      } else if (mag >= 6) {
+        title = '⚠️ 日本近海 M' + mag.toFixed(1) + ' 大地震';
+        body  = name + '\n気象庁情報を確認してください。';
+      }
+
+      if (title && Notification.permission === 'granted') {
+        new Notification(title, { body, icon: '🌊' });
+        newNotified.push(id);
+      }
+    }
+
+    // 直近100件だけ保持
+    localStorage.setItem('notified_ids', JSON.stringify(newNotified.slice(-100)));
+    showPwaStatus('最終チェック: ' + new Date().toLocaleTimeString('ja-JP'), 'ok');
+  } catch(e) {
+    showPwaStatus('チェック失敗: ' + e.message, 'warn');
+  }
 }
 
 function showPwaStatus(msg, level) {
