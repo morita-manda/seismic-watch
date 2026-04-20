@@ -248,33 +248,26 @@ main { max-width:900px; margin:0 auto; padding:18px 16px 120px; display:flex; fl
     </div>
   </div>
 
-  <!-- 気象庁情報（固定表示） -->
+  <!-- 気象庁情報（リンクのみ） -->
   <div class="panel">
     <div class="ptitle">気象庁 南海トラフ地震関連情報</div>
-    <div class="jma-box normal">
-      <div class="jma-head">
-        <div class="jma-icon">✅</div>
-        <div class="jma-title">南海トラフ沿いの地震に関する評価（第104回・定例）</div>
-        <div class="jma-date">2026/04/07</div>
-      </div>
-      <div class="jma-body">
-        現在のところ、<strong>南海トラフ沿いの大規模地震の発生可能性が平常時と比べて相対的に高まったと考えられる特段の変化は観測されていません。</strong><br>
-        臨時情報の発表はありません。深部低周波地震（微動）は紀伊半島中部〜東海で散発的に観測。
-      </div>
-    </div>
-    <div class="jma-box caution">
-      <div class="jma-head">
-        <div class="jma-icon">⚠️</div>
-        <div class="jma-title">長期評価：30年以内発生確率 60〜90%以上（切迫性 高）</div>
-        <div class="jma-date">2025/09/26更新</div>
-      </div>
-      <div class="jma-body">
-        昭和南海地震（1946年）から<strong>約80年経過</strong>。M9クラス発生時の最大想定死者数<strong>約29.8万人</strong>、経済被害約292兆円（2025年3月新想定）。
-      </div>
-    </div>
-    <div class="links">
-      <a class="lnk" href="https://www.data.jma.go.jp/eew/data/nteq/index.html" target="_blank">🔗 気象庁 南海トラフ情報</a>
-      <a class="lnk" href="https://www.bousai.go.jp/jishin/nankai/rinji/index3.html" target="_blank">🔗 臨時情報が出たら</a>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="https://www.jma.go.jp/bosai/nteq/" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);border-radius:8px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(0,212,255,.1)'" onmouseout="this.style.background='rgba(0,212,255,.05)'">
+        <span style="font-size:1.4rem;flex-shrink:0;">🌊</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--blue);">南海トラフ地震 関連情報</div>
+          <div style="font-size:.65rem;color:var(--dim);margin-top:2px;font-family:'Share Tech Mono',monospace;">www.jma.go.jp/bosai/nteq/</div>
+        </div>
+        <span style="margin-left:auto;color:var(--dim);font-size:1rem;">›</span>
+      </a>
+      <a href="https://www.bousai.go.jp/jishin/nankai/rinji/index3.html" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,208,0,.05);border:1px solid rgba(255,208,0,.2);border-radius:8px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,208,0,.1)'" onmouseout="this.style.background='rgba(255,208,0,.05)'">
+        <span style="font-size:1.4rem;flex-shrink:0;">⚠️</span>
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:var(--yellow);">南海トラフ地震臨時情報が発表されたら！</div>
+          <div style="font-size:.65rem;color:var(--dim);margin-top:2px;font-family:'Share Tech Mono',monospace;">www.bousai.go.jp — 内閣府</div>
+        </div>
+        <span style="margin-left:auto;color:var(--dim);font-size:1rem;">›</span>
+      </a>
     </div>
   </div>
 
@@ -288,6 +281,38 @@ main { max-width:900px; margin:0 auto; padding:18px 16px 120px; display:flex; fl
       <a class="lnk" href="https://earthquake.tenki.jp/bousai/earthquake/entries/" target="_blank">🔗 tenki.jp 地震情報</a>
       <a class="lnk" href="https://www.data.jma.go.jp/multi/quake/index.html?lang=jp" target="_blank">🔗 気象庁 地震情報</a>
     </div>
+  </div>
+
+  <!-- X(Twitter) 地震情報 -->
+  <div class="panel">
+    <div class="ptitle">𝕏 地震に関する投稿</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <a href="https://twitter.com/search?q=%E5%9C%B0%E9%9C%87+%E5%8D%97%E6%B5%B7%E3%83%88%E3%83%A9%E3%83%95&f=live" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(29,161,242,.06);border:1px solid rgba(29,161,242,.2);border-radius:8px;text-decoration:none;" onmouseover="this.style.background='rgba(29,161,242,.12)'" onmouseout="this.style.background='rgba(29,161,242,.06)'">
+        <span style="font-size:1.2rem;flex-shrink:0;">🔍</span>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;color:#1da1f2;">「地震 南海トラフ」の最新ポスト</div>
+          <div style="font-size:.65rem;color:var(--dim);margin-top:2px;">リアルタイム検索 — X(Twitter)</div>
+        </div>
+        <span style="margin-left:auto;color:var(--dim);">›</span>
+      </a>
+      <a href="https://twitter.com/search?q=%E5%9C%B0%E9%9C%87+%E5%AF%8C%E5%A3%AB%E5%B1%B1&f=live" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(29,161,242,.06);border:1px solid rgba(29,161,242,.2);border-radius:8px;text-decoration:none;" onmouseover="this.style.background='rgba(29,161,242,.12)'" onmouseout="this.style.background='rgba(29,161,242,.06)'">
+        <span style="font-size:1.2rem;flex-shrink:0;">🔍</span>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;color:#1da1f2;">「地震 富士山」の最新ポスト</div>
+          <div style="font-size:.65rem;color:var(--dim);margin-top:2px;">リアルタイム検索 — X(Twitter)</div>
+        </div>
+        <span style="margin-left:auto;color:var(--dim);">›</span>
+      </a>
+      <a href="https://twitter.com/UN_NERV" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(29,161,242,.06);border:1px solid rgba(29,161,242,.2);border-radius:8px;text-decoration:none;" onmouseover="this.style.background='rgba(29,161,242,.12)'" onmouseout="this.style.background='rgba(29,161,242,.06)'">
+        <span style="font-size:1.2rem;flex-shrink:0;">📡</span>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;color:#1da1f2;">特務機関NERV（@UN_NERV）</div>
+          <div style="font-size:.65rem;color:var(--dim);margin-top:2px;">国内最速の災害情報アカウント</div>
+        </div>
+        <span style="margin-left:auto;color:var(--dim);">›</span>
+      </a>
+    </div>
+    <div style="margin-top:10px;font-size:.62rem;color:var(--dim);line-height:1.6;">※ X APIの制限により直接表示はできません。タップするとXのリアルタイム検索が開きます。</div>
   </div>
 
   <!-- トレンドグラフ -->
@@ -348,6 +373,86 @@ main { max-width:900px; margin:0 auto; padding:18px 16px 120px; display:flex; fl
 </div>
 
 <script>
+// ══════════════════════════════════════
+// 地名日本語変換テーブル
+// ══════════════════════════════════════
+var PLACE_JA = {
+  'near the east coast of honshu':       '本州東岸付近',
+  'near the coast of honshu':            '本州沿岸付近',
+  'off the east coast of honshu':        '本州東方沖',
+  'honshu, japan':                       '本州',
+  'hokkaido, japan':                     '北海道',
+  'kyushu, japan':                       '九州',
+  'shikoku, japan':                      '四国',
+  'ryukyu islands':                      '琉球諸島',
+  'ryukyu islands, japan':               '琉球諸島',
+  'izu islands':                         '伊豆諸島',
+  'izu islands, japan':                  '伊豆諸島',
+  'bonin islands':                       '小笠原諸島',
+  'volcano islands':                     '火山列島',
+  'near s. coast of honshu':             '本州南岸付近',
+  'near n. coast of honshu':             '本州北岸付近',
+  'e of honshu':                         '本州東方',
+  'off e. coast of honshu':              '本州東方沖',
+  'near the south coast of western honshu': '西日本南岸付近',
+  'western honshu':                      '西日本（本州）',
+  'eastern honshu':                      '東日本（本州）',
+  'northern honshu':                     '北日本（本州）',
+  'southern honshu':                     '南日本（本州）',
+  'kyushu-palau ridge':                  '九州・パラオ海嶺',
+  'nansei-shoto islands':                '南西諸島',
+  'iwo jima':                            '硫黄島付近',
+  'volcano islands, japan':              '火山列島',
+  'near the coast of':                   '沿岸付近',
+  'off the coast of':                    '沖',
+  'east of':                             '東方',
+  'west of':                             '西方',
+  'north of':                            '北方',
+  'south of':                            '南方',
+  'southeast of':                        '南東方',
+  'southwest of':                        '南西方',
+  'northeast of':                        '北東方',
+  'northwest of':                        '北西方',
+};
+
+var REGION_JA = [
+  ['sanriku','三陸沖'],['tohoku','東北地方'],
+  ['miyagi','宮城県沖'],['iwate','岩手県沖'],['aomori','青森県沖'],
+  ['fukushima','福島県沖'],['ibaraki','茨茨城県沖'],['chiba','千葉県沖'],
+  ['tokyo','東京都沖'],['kanagawa','神奈川県沖'],
+  ['shizuoka','静岡県沖'],['suruga','駿河湾'],['sagami','相模湾'],
+  ['tokai','東海沖'],['kii','紀伊半島沖'],['wakayama','和歌山沖'],
+  ['mie','三重県沖'],['aichi','愛知県沖'],['nankai','南海'],
+  ['hyogo','兵庫県沖'],['osaka','大阪府沖'],['kochi','高知県沖'],
+  ['tokushima','徳島県沖'],['ehime','愛媛県沖'],
+  ['kyushu','九州沖'],['oita','大分県沖'],['miyazaki','宮崎県沖'],
+  ['kagoshima','鹿児島県沖'],['hyuga','日向灘'],['bungo','豊後水道'],
+  ['fuji','富士山周辺'],['izu','伊豆地方'],['hakone','箱根'],
+  ['nagano','長野県'],['niigata','新潟県'],['yamagata','山形県'],
+  ['akita','秋田県'],['hokkaido','北海道'],
+  ['okinawa','沖縄'],['amami','奄美大島周辺'],
+];
+
+function toJaName(place) {
+  if (!place) return '不明';
+  var lower = place.toLowerCase();
+
+  // 距離表現「km ... of」を除去して地名部分だけ取る
+  var m = lower.match(/(?:\d+\s*km\s+[a-z\s]+of\s+)(.+)/);
+  var region = m ? m[1].trim() : lower;
+
+  // 既知の地域名テーブルで変換
+  for (var i=0; i<REGION_JA.length; i++) {
+    if (region.indexOf(REGION_JA[i][0]) !== -1) return REGION_JA[i][1];
+  }
+  // フルマッチテーブル
+  for (var key in PLACE_JA) {
+    if (region.indexOf(key) !== -1) return PLACE_JA[key];
+  }
+  // 変換できない場合は元の文字列（短縮）
+  return place.replace(/^\d+\s*km\s+[a-z\s]+of\s+/i,'').slice(0,20);
+}
+
 // ══════════════════════════════════════
 // 定数
 // ══════════════════════════════════════
@@ -423,15 +528,17 @@ function fetchAll() {
   setStatus('データ取得中...', '#00d4ff');
 
   var now = new Date();
-  var past7 = new Date(now - 7*24*60*60*1000);
+  var past7  = new Date(now - 7*24*60*60*1000);
+  var past35 = new Date(now - 35*24*60*60*1000); // 月間トレンド用
   var fmt = function(d) { return d.toISOString().slice(0,10); };
 
+  // 35日分取得（週間・月間トレンド両対応）
   var url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson'
-    + '&starttime=' + fmt(past7)
-    + '&endtime='   + fmt(new Date(now.getTime() + 86400000)) // 明日まで（今日分確実に含む）
+    + '&starttime=' + fmt(past35)
+    + '&endtime='   + fmt(new Date(now.getTime() + 86400000))
     + '&minlatitude=24&maxlatitude=46'
     + '&minlongitude=122&maxlongitude=146'
-    + '&minmagnitude=3.0&orderby=time&limit=50';
+    + '&minmagnitude=3.0&orderby=time&limit=200';
 
   fetch(url)
     .then(function(res) {
@@ -510,9 +617,10 @@ function updateList(items) {
            + t.getMinutes().toString().padStart(2,'0');
     var tl = e.zone==='nankai'?'南海':e.zone==='fuji'?'富士':'他';
     var mc = magCls(e.mag);
+    var jaName = toJaName(e.name);
     return '<div class="eitem">'
       + '<span class="etime">' + ts + '</span>'
-      + '<span class="eloc">'  + e.name + '</span>'
+      + '<span class="eloc">'  + jaName + '</span>'
       + '<span class="etype t-' + e.zone + '">' + tl + '</span>'
       + '<span class="emag ' + mc + '">M' + e.mag.toFixed(1) + '</span>'
       + '</div>';
